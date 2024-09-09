@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 export default function ResultPage() {
   const [results, setResults] = useState([]);
+  const [sno,setSno]=useState(0);
 
   useEffect(() => {
     fetch('https://csbsquizserver-production-ba05.up.railway.app/api/results')
@@ -16,6 +17,7 @@ export default function ResultPage() {
         <table style={{ borderCollapse: 'collapse', width: '100%' }}>
           <thead>
             <tr>
+              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left', backgroundColor: '#f0f0f0' }}>Sno</th>
               <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left', backgroundColor: '#f0f0f0' }}>Name</th>
               <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left', backgroundColor: '#f0f0f0' }}>Department</th>
               <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left', backgroundColor: '#f0f0f0' }}>Score</th>
@@ -24,6 +26,7 @@ export default function ResultPage() {
           <tbody>
             {results.map((result, index) => (
               <tr key={index} style={{ backgroundColor: index % 2 === 0 ? '#f2f2f2' : '#fff' }}>
+                <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>{index+1}</td>
                 <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>{result.name}</td>
                 <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>{result.department}</td>
                 <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>{result.score}</td>
